@@ -1,0 +1,70 @@
+[tool.poetry]
+name = "autopilot-agents"
+version = "0.1.0"
+description = "Autopilot Agents for Project Yoda application"
+authors = ["Shaun Alexander <shaun.alexander@aa.com>"]
+license = "MIT"
+
+[project]
+name = "app"
+version = "0.1.0"
+dependencies = [
+  "langgraph",
+  "langgraph-sdk",
+  "langgraph_supervisor",
+  "langchain_core",
+  "langchain_openai",
+  "langchain-google-genai",
+  "langchain",
+  "langchain-mcp-adapters>=0.1.7",
+  "openai",
+  "langchain-community",
+  "tavily-python",
+  "python-dotenv",
+  "uvicorn",
+  "fastmcp",
+  "fastapi",
+  "langchain-ollama",
+  "llama-index",
+  "llama-index-llms-ollama",
+  "llama-index-llms-azure-inference (>0.2.2)",
+  "llama-index-llms-azure-openai",
+  "llama-index-embeddings-ollama",
+  "llama-index-embeddings-azure-openai",
+  "llama-index-vector-stores-postgres",
+  "psycopg2-binary",
+  "cryptography",
+  "sqlalchemy",
+  "azure-identity",
+  "starlette-oauth2-api (>=0.2.6,<0.3.0)",
+  "urllib3==2.5.0",
+  "deepagents",
+  "langgraph-cli[inmem] (>=0.3.7,<0.4.0)",
+  "pyjwt[crypto]",
+  "httpx",
+  "pydantic"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0.0"
+pytest-asyncio = "^1.1.0"
+httpx = "^0.28.1"
+pytest-mock = "^3.12.0"
+pytest-cov = "^6.2.1"
+pytest-xdist = "^3.8.0"
+faker = "^37.5.3"
+factory-boy = "^3.3.0"
+
+[tool.poetry.scripts]
+start = "app.server:main"

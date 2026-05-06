@@ -1,0 +1,20 @@
+{
+  "python_version": "3.12",
+  "dockerfile_lines": [],
+  "dependencies": ["."],
+  "graphs": {
+    "supervisor_agent": "./app/supervisor_agent/agent.py:graph",
+    "graph_agent": "./app/graph_agent/agent.py:graph",
+    "rag_agent": "./app/rag_agent/agent.py:graph",
+    "github_agent": "./app/github_agent/agent.py:graph",
+    "azure_agent": "./app/azure_agent/agent.py:graph",
+    "caas_agent": "./app/caas_agent/agent.py:graph",
+    "doc_agent": "./app/doc_agent/agent.py:graph",
+    "deep_agent": "./app/deep_agent/agent.py:graph"
+  },
+  "env": ".env",
+  "image_distro": "wolfi",
+  "auth": {
+    "path": "./app/auth/langgraph_auth.py:auth"
+  }
+}

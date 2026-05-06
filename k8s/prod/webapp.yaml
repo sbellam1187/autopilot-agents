@@ -1,0 +1,30 @@
+apiVersion: runway.aa.com/v1alpha1
+kind: WebApp
+metadata:
+  name: autopilot-agents
+  annotations:
+    enableCloudIngress: "true"
+    backstageName: autopilot-agents
+  labels:
+    app-id: autopilot-agents
+    aa-app-shortname: APIMgmtGQL
+    data-classification: nonpci
+    environment: prod
+spec:
+  containerName: docker.aa.com/prod/autopilot-agents
+  containerTag: 'v0.1.0'
+  port: 8000
+  healthCheck:
+    endpoint: /health
+    enabled: True
+    port: 8000
+  secretProviders:
+    - vault:
+        vaultNamespace: automation/apimgmtgql-autopilot-p
+        secretEngineMount: secrets
+        secretPath: prod
+  autoscale:
+    minimum: 1
+    maximum: 2
+  reachableServices:
+    - aa-graph-mcp-server.autopilot-prod.svc.cluster.local
